@@ -37,4 +37,4 @@ fs.mkdirSync(target, { recursive: true });
 fs.cpSync(SOURCE, target, { recursive: true });
 
 console.log(`已拷到 ${target}`);
-console.log('手机上：设置 → 扩展 → 本地开发（要先打开开发者模式），重新打开「邮箱」那一页。');
+console.log('手机上：设置 → 扩展 → 本地开发（要先打开开发者模式），重新打开那一页。');
