@@ -42,5 +42,13 @@
     "email",
     "mail",
     "mobile"
+  ],
+  "dshMobileDataServices": [
+    {
+      "service": "dsh-email",
+      "allow": [
+        "/api/dsh-email/"
+      ]
+    }
   ]
 }
