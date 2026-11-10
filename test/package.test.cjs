@@ -87,3 +87,12 @@ test('入口页没有写死的深浅两套底色（配色交给主题系统）',
   const stripped = css.replace(/var\([^)]*\)/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
   assert.ok(!/background:\s*#(?!f{3,6}\b)/i.test(stripped), '样式里出现了写死的底色');
 });
+
+test('详情不画自己的返回顶栏（外壳已经有一颗，网页里再画就是两层）', () => {
+  // 用户 2026-11-10 明确要求去掉详情顶部那条。这一页套在 App 外壳里，顶栏与返回键归外壳；
+  // 「从详情回列表」用右滑手势，不再摆一颗按钮 —— 否则一屏里会有两个长得一样、作用不同的返回。
+  const app = fs.readFileSync(path.join(ROOT, 'web', 'src', 'App.tsx'), 'utf8');
+  assert.ok(!/← 返回/.test(app), '详情里又出现了「← 返回」那颗按钮');
+  assert.ok(app.includes('onPointerDown') && app.includes('closeDetail'),
+    '右滑返回的交互动效不见了');
+});
