@@ -1,0 +1,46 @@
+{
+  "name": "dsh-email-plugin",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "邮箱插件（DSH）：把邮件接进手机 App 的邮箱页 —— 宿主半身 + 随包下发的手机扩展",
+  "license": "MIT",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WNLUO/dsh-email-plugin.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "engines": {
+    "dsh": ">=0.2.0",
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "dev:install": "node scripts/dev-install.mjs"
+  },
+  "dshMobileExtensions": "extensions",
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "extensions/**",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek-harness-plugin",
+    "cordis-plugin",
+    "email",
+    "mail",
+    "mobile"
+  ]
+}

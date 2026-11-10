@@ -1,0 +1,16 @@
+{
+  "name": "邮箱",
+  "version": "0.0.1",
+  "apiVersion": "1",
+  "main": "index.html",
+  "description": "在手机上收发邮件。插件装好后，App 的扩展页就能看到并安装它。",
+  "capabilities": [
+    "content.read",
+    "card.write"
+  ],
+  "entry": {
+    "name": "邮箱",
+    "slot": "normal",
+    "icon": true
+  }
+}

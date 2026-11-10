@@ -1,0 +1,11 @@
+# dsh bundle patch：把邮箱插件挂进 profile 的层栈。
+#
+# `name` 必须与包名逐字一致：loader 按包名解析，写歪不报错，只是插件永远不会出现在宿主里。
+#
+# 目前这个插件挂上去只做一件事 —— 让它的 `dshMobileExtensions` 声明被移动端插件看到，
+# 从而把手机扩展下发给 App。等邮件功能真接上了，需要哪个服务（比如 `webServer`）再加进
+# index.js 的 inject，这里不用动。
+- insert:
+    - id: dsh-email
+      name: 'dsh-email-plugin'
+      config: {}
