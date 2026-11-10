@@ -1,5 +1,5 @@
 {
-  "name": "邮箱",
+  "name": "邮件",
   "version": "0.0.1",
   "apiVersion": "1",
   "main": "index.html",
@@ -9,7 +9,7 @@
     "card.write"
   ],
   "entry": {
-    "name": "邮箱",
+    "name": "邮件",
     "slot": "normal",
     "icon": true
   }
