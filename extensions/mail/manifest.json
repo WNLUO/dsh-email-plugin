@@ -7,10 +7,5 @@
   "capabilities": [
     "content.read",
     "card.write"
-  ],
-  "entry": {
-    "name": "邮件",
-    "slot": "normal",
-    "icon": true
-  }
+  ]
 }
