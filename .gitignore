@@ -2,3 +2,7 @@ node_modules/
 *.tgz
 .dev-generations/
 .DS_Store
+
+# web 前端：依赖与构建中间产物都不进库，构建产物 extensions/mail/index.html 要进
+web/node_modules/
+web/dist/

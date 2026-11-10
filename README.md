@@ -7,12 +7,26 @@
 
 ## 现在是什么状态
 
-**骨架，功能还没做。**
+**界面做出来了，后端还没接。**
 
-- ✅ 插件包结构、`dshMobileExtensions` 声明、随包的手机扩展都在，装上去手机就能看到、
-  能安装、能打开。
-- ✅ 打开之后是一个占位页：说明「功能开发中」。
-- ⬜ 真正连邮箱、取信、读信、发信 —— 都还没做。
+- ✅ 插件包结构、`dshMobileExtensions` / `dshMobileDataServices` 声明、随包的手机扩展都在，
+  装上去手机就能看到、能安装、能打开。
+- ✅ 打开是完整的邮箱界面（账号条 / 文件夹 / 列表 / 详情 / 附件），现在吃的是演示数据。
+- ⬜ 真正连邮箱、取信、读信、发信 —— 后端接口与宿主取数还没接。
+
+## 前端（`web/`）
+
+界面是 React + [Appica UI](https://appica.dev/ui)（与 `dsh-mobile-plugin/React` 同一套库）。
+
+```sh
+cd web
+pnpm install
+pnpm dev      # http://127.0.0.1:5288，浏览器里看效果
+pnpm build    # 产出 ../extensions/mail/index.html（单文件，直接进扩展包）
+```
+
+`pnpm dev` 只给「用浏览器打开看」用，不连任何宿主，数据来自 `web/src/demo-data.ts`。
+改完要进扩展包的话得 `pnpm build` —— 产物是那个自包含的单文件 HTML，纯 dev 改动不会进包。
 
 ## 为什么先只做到这
 

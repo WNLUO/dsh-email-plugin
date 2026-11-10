@@ -73,8 +73,17 @@ test('入口页不引外部资源（页面是不透明源，外链会被 CSP 挡
   assert.ok(!/href\s*=\s*["']https?:/i.test(html), '入口页里有外链样式 / 链接');
 });
 
-test('入口页用外壳下发的配色变量，不写死色值', () => {
+test('入口页读外壳下发的深浅色（data-dsh-theme），不是自己另起一套', () => {
+  // 这一页用 Appica UI 的整套 token 画（与插件面板同一套库），所以配色不落到 --dsh-theme-*
+  // 那组变量上；它读的是外壳写的 `<html data-dsh-theme>`，再交给库的 ThemeProvider 强制那一档。
+  // 判据就一条：产物里真的读了这个属性。
   const html = fs.readFileSync(path.join(extDir, 'index.html'), 'utf8');
-  assert.ok(html.includes('--dsh-theme-background'), '没有用外壳下发的配色变量');
-  assert.ok(!/background:\s*#(?!f{3,6}\b)/i.test(html.replace(/var\([^)]*\)/g, '')), '有写死的底色');
+  assert.ok(html.includes('data-dsh-theme'), '没有读外壳下发的深浅色');
+});
+
+test('入口页没有写死的深浅两套底色（配色交给主题系统）', () => {
+  const css = fs.readFileSync(path.join(ROOT, 'web', 'src', 'index.css'), 'utf8');
+  // 只有兜底那句允许出现颜色字面量；其余用 var(--…) 走主题 token。
+  const stripped = css.replace(/var\([^)]*\)/g, '').replace(/\/\*[\s\S]*?\*\//g, '');
+  assert.ok(!/background:\s*#(?!f{3,6}\b)/i.test(stripped), '样式里出现了写死的底色');
 });

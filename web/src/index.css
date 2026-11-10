@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+@import '@appica/ui-react/styles.css';
+
+/* Appica UI 的类名在 node_modules 里，Tailwind 默认不扫，必须显式指过去 */
+@source '../node_modules/@appica/ui-react/dist';
+
+/*
+ * 整页底色 / 高度。
+ *
+ * 扩展页在手机上是套在 App 外壳（顶栏 + 圆角卡）里的一整块；这一页只负责把卡片里那块
+ * 区域填满。`100dvh` 而不是 `100vh`：安卓上手势条弹出 / 收起时 `vh` 不跟着变，底部会
+ * 露出一条白边。
+ */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* 列表行按下时的反馈统一走这个，别每行自己写一份 */
+.mail-row {
+  transition: background-color 120ms ease;
+}
+.mail-row:active {
+  background: var(--accent-soft, rgba(127, 127, 127, 0.12));
+}
